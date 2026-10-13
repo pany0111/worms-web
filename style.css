@@ -1,0 +1,38 @@
+:root {
+  --bg: #0f1420; --card: #1a2133; --line: #2c3650; --text: #e8ecf4; --sub: #94a0b8;
+  --accent: #ff7a1a; --accent2: #3e8ef7; --err: #ff5d5d;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: "Pretendard", "Malgun Gothic", system-ui, sans-serif;
+  display: flex; align-items: center; justify-content: center;
+}
+.hidden { display: none !important; }
+.screen { width: min(520px, calc(100vw - 32px)); padding: 24px 0; }
+h1 { font-size: 44px; letter-spacing: 2px; margin: 0 0 20px; text-align: center; }
+h1 span { color: var(--accent); }
+h2 { font-size: 15px; color: var(--sub); margin: 0 0 12px; font-weight: 600; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin: 12px 0; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 8px 0; }
+.field { display: flex; gap: 10px; align-items: center; justify-content: center; }
+input, select {
+  background: #0c111c; color: var(--text); border: 1px solid var(--line);
+  border-radius: 8px; padding: 9px 10px; font-size: 15px;
+}
+#code { text-transform: uppercase; letter-spacing: 3px; width: 150px; }
+button {
+  background: var(--accent); color: #fff; border: 0; border-radius: 8px;
+  padding: 10px 16px; font-size: 15px; font-weight: 700; cursor: pointer;
+}
+button:hover { filter: brightness(1.1); }
+button:disabled { opacity: .5; cursor: default; }
+button.ghost { background: transparent; border: 1px solid var(--line); color: var(--text); }
+button.small { padding: 4px 10px; font-size: 13px; }
+.code { font-size: 26px; letter-spacing: 4px; color: var(--accent); }
+.msg { min-height: 20px; color: var(--err); text-align: center; }
+.help { color: var(--sub); font-size: 13px; text-align: center; line-height: 1.6; }
+#players { list-style: none; padding: 0; }
+#players li { background: var(--card); border: 1px solid var(--line); border-left: 6px solid; border-radius: 8px; padding: 10px 14px; margin: 6px 0; }
+canvas { display: block; width: min(100vw, 200vh); height: auto; background: #000; }

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- 보안: 외부 스크립트·인라인 스크립트 금지, 통신은 PeerJS 시그널링 서버만 허용 -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://0.peerjs.com wss://0.peerjs.com; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Worms Web</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="menu" class="screen">
+  <h1>WORMS <span>WEB</span></h1>
+  <label class="field">닉네임 <input id="name" maxlength="12" autocomplete="off" spellcheck="false"></label>
+
+  <section class="card">
+    <h2>싱글</h2>
+    <div class="row">
+      <button id="btnAi">AI 대전</button>
+      <label>AI <select id="aiCount"><option>1</option><option>2</option><option selected>3</option></select> 팀</label>
+      <label>난이도 <select id="aiLevel"><option value="0">쉬움</option><option value="1" selected>보통</option><option value="2">어려움</option></select></label>
+    </div>
+    <div class="row">
+      <button id="btnLocal" class="ghost">한 PC 대전</button>
+      <label><select id="localTeams"><option>2</option><option>3</option><option selected>4</option></select> 팀</label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>온라인 (최대 4인)</h2>
+    <div class="row"><button id="btnHost">방 만들기</button></div>
+    <div class="row">
+      <input id="code" maxlength="6" placeholder="방 코드 6자리" autocomplete="off" spellcheck="false">
+      <button id="btnJoin" class="ghost">참가</button>
+    </div>
+  </section>
+
+  <p id="msg" class="msg" role="status"></p>
+  <p class="help">←→ 이동 · ↑↓ 조준 · Enter 점프 · Space 누르고 있다 떼서 발사 · 1 바주카 · 2 수류탄 · 3 샷건</p>
+</main>
+
+<main id="lobby" class="screen hidden">
+  <h2>대기실</h2>
+  <p>방 코드 <b id="roomCode" class="code"></b> <button id="btnCopy" class="ghost small">복사</button></p>
+  <ul id="players"></ul>
+  <div class="row">
+    <button id="btnStart" class="hidden">게임 시작</button>
+    <button id="btnLeave" class="ghost">나가기</button>
+  </div>
+  <p id="lobbyMsg" class="msg" role="status"></p>
+  <p class="help">방 코드를 아는 사람만 들어올 수 있습니다. 코드는 믿을 수 있는 사람에게만 알려주세요.</p>
+</main>
+
+<canvas id="cv" width="1600" height="800" class="hidden"></canvas>
+
+<script src="vendor/peerjs.min.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
